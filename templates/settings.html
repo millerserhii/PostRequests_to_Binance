@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Settings{% endblock %}
+{% block central %}
+
+<div class="container">
+ <hr>
+ <hr>
+ <hr>
+ <hr>
+ <hr>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+ <hr>
+  <form action="" method="post" class="form" role="form">
+   {{ form.csrf_token }}
+   <div class="row">
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(form.FORM_API_KEY, class='form-control',
+        placeholder='Binance Api Key') }}
+    </div>
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(form.FORM_SECRET_KEY, class='form-control',
+        placeholder='Binance Secret Key') }}
+    </div>
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(form.FORM_EMAIL_TO, class='form-control',
+        placeholder='Email to') }}
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">update settings</button>
+  </form>
+<hr>
+
+  <form action="/change_pass" method="post" class="pass_form" role="form">
+   {{ form.csrf_token }}
+   <div class="row">
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(pass_form.old_pass, class='form-control',
+        placeholder='old password') }}
+    </div>
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(pass_form.new_pass, class='form-control',
+        placeholder='enter new password') }}
+    </div>
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(pass_form.new_pass_repeat, class='form-control',
+        placeholder='repeat new password') }}
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">UPDATE PASSWORD</button>
+  </form>
+
+<hr>
+  <form method="post" action="">
+     <input type="submit" value="Clear log list" name="Clear log list" class="btn btn-success"/>
+  </form>
+</div>
+{% endblock %}

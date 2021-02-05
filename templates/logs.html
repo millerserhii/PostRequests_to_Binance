@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+      {% block title %}Script LOG{% endblock %}
+      {% block central %}
+<div class="container">
+
+    <div class="align-middle">
+        <table>
+        <p>1</p>
+        <p>1</p>
+        <p></p>
+        <p> </p>
+
+        <r> DATE_TIME | SYMBOL | SIDE | QUANTITY | PRICE | RESULT </r>
+            <h2></h2>
+        {% for data in log_res %}
+          <tr>
+              <td> {{ data }} </td>
+          </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+      {% endblock %}
