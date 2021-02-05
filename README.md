@@ -1,4 +1,5 @@
  POST Requests to Binance
+ 
 This project is made for automated crypto trade on Binance
 It was written on Python with Flask
 The app receives POST requests and processed them into Binance open and close orders
